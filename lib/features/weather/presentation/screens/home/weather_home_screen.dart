@@ -9,6 +9,7 @@ import 'package:radar_clima2/features/weather/presentation/screens/widgets/weath
 import 'package:radar_clima2/shared/widgets/custom_text_form_field.dart';
 import 'package:radar_clima2/shared/widgets/loading_overlay.dart';
 import 'package:radar_clima2/shared/widgets/weather_app_bar.dart';
+import 'package:radar_clima2/shared/widgets/weather_snack_bar.dart';
 
 class WeatherHomeScreen extends ConsumerStatefulWidget {
   const WeatherHomeScreen({super.key});
@@ -37,9 +38,11 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
 
   void _onRetry() {
     final city = _cityEC.text.trim();
-    if (city.isNotEmpty) {
-      ref.read(weatherProvider.notifier).searchWeather(city);
+    if (city.isEmpty) {
+      WeatherSnackBar.show(context, AppStrings.searchEmptyError, isError: true);
+      return;
     }
+    ref.read(weatherProvider.notifier).searchWeather(city);
   }
 
   @override
