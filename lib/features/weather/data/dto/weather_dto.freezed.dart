@@ -13,9 +13,535 @@ part of 'weather_dto.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
+mixin _$SysDto {
+
+ String get country;
+/// Create a copy of SysDto
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SysDtoCopyWith<SysDto> get copyWith => _$SysDtoCopyWithImpl<SysDto>(this as SysDto, _$identity);
+
+  /// Serializes this SysDto to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SysDto&&(identical(other.country, country) || other.country == country));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,country);
+
+@override
+String toString() {
+  return 'SysDto(country: $country)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $SysDtoCopyWith<$Res>  {
+  factory $SysDtoCopyWith(SysDto value, $Res Function(SysDto) _then) = _$SysDtoCopyWithImpl;
+@useResult
+$Res call({
+ String country
+});
+
+
+
+
+}
+/// @nodoc
+class _$SysDtoCopyWithImpl<$Res>
+    implements $SysDtoCopyWith<$Res> {
+  _$SysDtoCopyWithImpl(this._self, this._then);
+
+  final SysDto _self;
+  final $Res Function(SysDto) _then;
+
+/// Create a copy of SysDto
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? country = null,}) {
+  return _then(_self.copyWith(
+country: null == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [SysDto].
+extension SysDtoPatterns on SysDto {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SysDto value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _SysDto() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SysDto value)  $default,){
+final _that = this;
+switch (_that) {
+case _SysDto():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SysDto value)?  $default,){
+final _that = this;
+switch (_that) {
+case _SysDto() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String country)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _SysDto() when $default != null:
+return $default(_that.country);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String country)  $default,) {final _that = this;
+switch (_that) {
+case _SysDto():
+return $default(_that.country);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String country)?  $default,) {final _that = this;
+switch (_that) {
+case _SysDto() when $default != null:
+return $default(_that.country);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _SysDto implements SysDto {
+  const _SysDto({required this.country});
+  factory _SysDto.fromJson(Map<String, dynamic> json) => _$SysDtoFromJson(json);
+
+@override final  String country;
+
+/// Create a copy of SysDto
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SysDtoCopyWith<_SysDto> get copyWith => __$SysDtoCopyWithImpl<_SysDto>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$SysDtoToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SysDto&&(identical(other.country, country) || other.country == country));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,country);
+
+@override
+String toString() {
+  return 'SysDto(country: $country)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$SysDtoCopyWith<$Res> implements $SysDtoCopyWith<$Res> {
+  factory _$SysDtoCopyWith(_SysDto value, $Res Function(_SysDto) _then) = __$SysDtoCopyWithImpl;
+@override @useResult
+$Res call({
+ String country
+});
+
+
+
+
+}
+/// @nodoc
+class __$SysDtoCopyWithImpl<$Res>
+    implements _$SysDtoCopyWith<$Res> {
+  __$SysDtoCopyWithImpl(this._self, this._then);
+
+  final _SysDto _self;
+  final $Res Function(_SysDto) _then;
+
+/// Create a copy of SysDto
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? country = null,}) {
+  return _then(_SysDto(
+country: null == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$WindDto {
+
+ double get speed;
+/// Create a copy of WindDto
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$WindDtoCopyWith<WindDto> get copyWith => _$WindDtoCopyWithImpl<WindDto>(this as WindDto, _$identity);
+
+  /// Serializes this WindDto to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is WindDto&&(identical(other.speed, speed) || other.speed == speed));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,speed);
+
+@override
+String toString() {
+  return 'WindDto(speed: $speed)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $WindDtoCopyWith<$Res>  {
+  factory $WindDtoCopyWith(WindDto value, $Res Function(WindDto) _then) = _$WindDtoCopyWithImpl;
+@useResult
+$Res call({
+ double speed
+});
+
+
+
+
+}
+/// @nodoc
+class _$WindDtoCopyWithImpl<$Res>
+    implements $WindDtoCopyWith<$Res> {
+  _$WindDtoCopyWithImpl(this._self, this._then);
+
+  final WindDto _self;
+  final $Res Function(WindDto) _then;
+
+/// Create a copy of WindDto
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? speed = null,}) {
+  return _then(_self.copyWith(
+speed: null == speed ? _self.speed : speed // ignore: cast_nullable_to_non_nullable
+as double,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [WindDto].
+extension WindDtoPatterns on WindDto {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _WindDto value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _WindDto() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _WindDto value)  $default,){
+final _that = this;
+switch (_that) {
+case _WindDto():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _WindDto value)?  $default,){
+final _that = this;
+switch (_that) {
+case _WindDto() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( double speed)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _WindDto() when $default != null:
+return $default(_that.speed);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( double speed)  $default,) {final _that = this;
+switch (_that) {
+case _WindDto():
+return $default(_that.speed);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( double speed)?  $default,) {final _that = this;
+switch (_that) {
+case _WindDto() when $default != null:
+return $default(_that.speed);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _WindDto implements WindDto {
+  const _WindDto({required this.speed});
+  factory _WindDto.fromJson(Map<String, dynamic> json) => _$WindDtoFromJson(json);
+
+@override final  double speed;
+
+/// Create a copy of WindDto
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$WindDtoCopyWith<_WindDto> get copyWith => __$WindDtoCopyWithImpl<_WindDto>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$WindDtoToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _WindDto&&(identical(other.speed, speed) || other.speed == speed));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,speed);
+
+@override
+String toString() {
+  return 'WindDto(speed: $speed)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$WindDtoCopyWith<$Res> implements $WindDtoCopyWith<$Res> {
+  factory _$WindDtoCopyWith(_WindDto value, $Res Function(_WindDto) _then) = __$WindDtoCopyWithImpl;
+@override @useResult
+$Res call({
+ double speed
+});
+
+
+
+
+}
+/// @nodoc
+class __$WindDtoCopyWithImpl<$Res>
+    implements _$WindDtoCopyWith<$Res> {
+  __$WindDtoCopyWithImpl(this._self, this._then);
+
+  final _WindDto _self;
+  final $Res Function(_WindDto) _then;
+
+/// Create a copy of WindDto
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? speed = null,}) {
+  return _then(_WindDto(
+speed: null == speed ? _self.speed : speed // ignore: cast_nullable_to_non_nullable
+as double,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
 mixin _$WeatherDto {
 
- MainDto get main; List<WeatherDescriptionDto> get weather; String get name;
+ MainDto get main; List<WeatherDescriptionDto> get weather; String get name; SysDto get sys; WindDto get wind;
 /// Create a copy of WeatherDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +554,16 @@ $WeatherDtoCopyWith<WeatherDto> get copyWith => _$WeatherDtoCopyWithImpl<Weather
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is WeatherDto&&(identical(other.main, main) || other.main == main)&&const DeepCollectionEquality().equals(other.weather, weather)&&(identical(other.name, name) || other.name == name));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is WeatherDto&&(identical(other.main, main) || other.main == main)&&const DeepCollectionEquality().equals(other.weather, weather)&&(identical(other.name, name) || other.name == name)&&(identical(other.sys, sys) || other.sys == sys)&&(identical(other.wind, wind) || other.wind == wind));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,main,const DeepCollectionEquality().hash(weather),name);
+int get hashCode => Object.hash(runtimeType,main,const DeepCollectionEquality().hash(weather),name,sys,wind);
 
 @override
 String toString() {
-  return 'WeatherDto(main: $main, weather: $weather, name: $name)';
+  return 'WeatherDto(main: $main, weather: $weather, name: $name, sys: $sys, wind: $wind)';
 }
 
 
@@ -48,11 +574,11 @@ abstract mixin class $WeatherDtoCopyWith<$Res>  {
   factory $WeatherDtoCopyWith(WeatherDto value, $Res Function(WeatherDto) _then) = _$WeatherDtoCopyWithImpl;
 @useResult
 $Res call({
- MainDto main, List<WeatherDescriptionDto> weather, String name
+ MainDto main, List<WeatherDescriptionDto> weather, String name, SysDto sys, WindDto wind
 });
 
 
-$MainDtoCopyWith<$Res> get main;
+$MainDtoCopyWith<$Res> get main;$SysDtoCopyWith<$Res> get sys;$WindDtoCopyWith<$Res> get wind;
 
 }
 /// @nodoc
@@ -65,12 +591,14 @@ class _$WeatherDtoCopyWithImpl<$Res>
 
 /// Create a copy of WeatherDto
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? main = null,Object? weather = null,Object? name = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? main = null,Object? weather = null,Object? name = null,Object? sys = null,Object? wind = null,}) {
   return _then(_self.copyWith(
 main: null == main ? _self.main : main // ignore: cast_nullable_to_non_nullable
 as MainDto,weather: null == weather ? _self.weather : weather // ignore: cast_nullable_to_non_nullable
 as List<WeatherDescriptionDto>,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,
+as String,sys: null == sys ? _self.sys : sys // ignore: cast_nullable_to_non_nullable
+as SysDto,wind: null == wind ? _self.wind : wind // ignore: cast_nullable_to_non_nullable
+as WindDto,
   ));
 }
 /// Create a copy of WeatherDto
@@ -81,6 +609,24 @@ $MainDtoCopyWith<$Res> get main {
   
   return $MainDtoCopyWith<$Res>(_self.main, (value) {
     return _then(_self.copyWith(main: value));
+  });
+}/// Create a copy of WeatherDto
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SysDtoCopyWith<$Res> get sys {
+  
+  return $SysDtoCopyWith<$Res>(_self.sys, (value) {
+    return _then(_self.copyWith(sys: value));
+  });
+}/// Create a copy of WeatherDto
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$WindDtoCopyWith<$Res> get wind {
+  
+  return $WindDtoCopyWith<$Res>(_self.wind, (value) {
+    return _then(_self.copyWith(wind: value));
   });
 }
 }
@@ -164,10 +710,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( MainDto main,  List<WeatherDescriptionDto> weather,  String name)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( MainDto main,  List<WeatherDescriptionDto> weather,  String name,  SysDto sys,  WindDto wind)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _WeatherDto() when $default != null:
-return $default(_that.main,_that.weather,_that.name);case _:
+return $default(_that.main,_that.weather,_that.name,_that.sys,_that.wind);case _:
   return orElse();
 
 }
@@ -185,10 +731,10 @@ return $default(_that.main,_that.weather,_that.name);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( MainDto main,  List<WeatherDescriptionDto> weather,  String name)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( MainDto main,  List<WeatherDescriptionDto> weather,  String name,  SysDto sys,  WindDto wind)  $default,) {final _that = this;
 switch (_that) {
 case _WeatherDto():
-return $default(_that.main,_that.weather,_that.name);case _:
+return $default(_that.main,_that.weather,_that.name,_that.sys,_that.wind);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -205,10 +751,10 @@ return $default(_that.main,_that.weather,_that.name);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( MainDto main,  List<WeatherDescriptionDto> weather,  String name)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( MainDto main,  List<WeatherDescriptionDto> weather,  String name,  SysDto sys,  WindDto wind)?  $default,) {final _that = this;
 switch (_that) {
 case _WeatherDto() when $default != null:
-return $default(_that.main,_that.weather,_that.name);case _:
+return $default(_that.main,_that.weather,_that.name,_that.sys,_that.wind);case _:
   return null;
 
 }
@@ -220,7 +766,7 @@ return $default(_that.main,_that.weather,_that.name);case _:
 @JsonSerializable()
 
 class _WeatherDto implements WeatherDto {
-  const _WeatherDto({required this.main, required final  List<WeatherDescriptionDto> weather, required this.name}): _weather = weather;
+  const _WeatherDto({required this.main, required final  List<WeatherDescriptionDto> weather, required this.name, required this.sys, required this.wind}): _weather = weather;
   factory _WeatherDto.fromJson(Map<String, dynamic> json) => _$WeatherDtoFromJson(json);
 
 @override final  MainDto main;
@@ -232,6 +778,8 @@ class _WeatherDto implements WeatherDto {
 }
 
 @override final  String name;
+@override final  SysDto sys;
+@override final  WindDto wind;
 
 /// Create a copy of WeatherDto
 /// with the given fields replaced by the non-null parameter values.
@@ -246,16 +794,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _WeatherDto&&(identical(other.main, main) || other.main == main)&&const DeepCollectionEquality().equals(other._weather, _weather)&&(identical(other.name, name) || other.name == name));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _WeatherDto&&(identical(other.main, main) || other.main == main)&&const DeepCollectionEquality().equals(other._weather, _weather)&&(identical(other.name, name) || other.name == name)&&(identical(other.sys, sys) || other.sys == sys)&&(identical(other.wind, wind) || other.wind == wind));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,main,const DeepCollectionEquality().hash(_weather),name);
+int get hashCode => Object.hash(runtimeType,main,const DeepCollectionEquality().hash(_weather),name,sys,wind);
 
 @override
 String toString() {
-  return 'WeatherDto(main: $main, weather: $weather, name: $name)';
+  return 'WeatherDto(main: $main, weather: $weather, name: $name, sys: $sys, wind: $wind)';
 }
 
 
@@ -266,11 +814,11 @@ abstract mixin class _$WeatherDtoCopyWith<$Res> implements $WeatherDtoCopyWith<$
   factory _$WeatherDtoCopyWith(_WeatherDto value, $Res Function(_WeatherDto) _then) = __$WeatherDtoCopyWithImpl;
 @override @useResult
 $Res call({
- MainDto main, List<WeatherDescriptionDto> weather, String name
+ MainDto main, List<WeatherDescriptionDto> weather, String name, SysDto sys, WindDto wind
 });
 
 
-@override $MainDtoCopyWith<$Res> get main;
+@override $MainDtoCopyWith<$Res> get main;@override $SysDtoCopyWith<$Res> get sys;@override $WindDtoCopyWith<$Res> get wind;
 
 }
 /// @nodoc
@@ -283,12 +831,14 @@ class __$WeatherDtoCopyWithImpl<$Res>
 
 /// Create a copy of WeatherDto
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? main = null,Object? weather = null,Object? name = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? main = null,Object? weather = null,Object? name = null,Object? sys = null,Object? wind = null,}) {
   return _then(_WeatherDto(
 main: null == main ? _self.main : main // ignore: cast_nullable_to_non_nullable
 as MainDto,weather: null == weather ? _self._weather : weather // ignore: cast_nullable_to_non_nullable
 as List<WeatherDescriptionDto>,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,
+as String,sys: null == sys ? _self.sys : sys // ignore: cast_nullable_to_non_nullable
+as SysDto,wind: null == wind ? _self.wind : wind // ignore: cast_nullable_to_non_nullable
+as WindDto,
   ));
 }
 
@@ -300,6 +850,24 @@ $MainDtoCopyWith<$Res> get main {
   
   return $MainDtoCopyWith<$Res>(_self.main, (value) {
     return _then(_self.copyWith(main: value));
+  });
+}/// Create a copy of WeatherDto
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SysDtoCopyWith<$Res> get sys {
+  
+  return $SysDtoCopyWith<$Res>(_self.sys, (value) {
+    return _then(_self.copyWith(sys: value));
+  });
+}/// Create a copy of WeatherDto
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$WindDtoCopyWith<$Res> get wind {
+  
+  return $WindDtoCopyWith<$Res>(_self.wind, (value) {
+    return _then(_self.copyWith(wind: value));
   });
 }
 }

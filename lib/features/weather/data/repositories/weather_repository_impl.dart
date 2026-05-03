@@ -36,7 +36,11 @@ class WeatherRepositoryImpl implements WeatherRepository {
 
       return WeatherModel(
         cityName: dto.name,
+        country: dto.sys.country,
         temperature: dto.main.temp,
+        feelsLike: dto.main.feelsLike,
+        humidity: dto.main.humidity,
+        windSpeed: dto.wind.speed,
         description: dto.weather.first.description,
         iconUrl:
             'https://openweathermap.org/img/wn/${dto.weather.first.icon}@2x.png',

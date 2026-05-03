@@ -17,7 +17,7 @@ class CurrentWeatherCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(24),
         border: Border.all(color: AppColors.white20),
       ),
-      padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 24),
+      padding: const EdgeInsets.fromLTRB(20, 28, 20, 28),
       child: WeatherDisplay(weather: weather),
     );
   }

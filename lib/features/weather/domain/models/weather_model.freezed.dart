@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$WeatherModel {
 
- String get cityName; double get temperature; String get description; String get iconUrl;
+ String get cityName; String get country; double get temperature; double get feelsLike; int get humidity; double get windSpeed; String get description; String get iconUrl;
 /// Create a copy of WeatherModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $WeatherModelCopyWith<WeatherModel> get copyWith => _$WeatherModelCopyWithImpl<W
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is WeatherModel&&(identical(other.cityName, cityName) || other.cityName == cityName)&&(identical(other.temperature, temperature) || other.temperature == temperature)&&(identical(other.description, description) || other.description == description)&&(identical(other.iconUrl, iconUrl) || other.iconUrl == iconUrl));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is WeatherModel&&(identical(other.cityName, cityName) || other.cityName == cityName)&&(identical(other.country, country) || other.country == country)&&(identical(other.temperature, temperature) || other.temperature == temperature)&&(identical(other.feelsLike, feelsLike) || other.feelsLike == feelsLike)&&(identical(other.humidity, humidity) || other.humidity == humidity)&&(identical(other.windSpeed, windSpeed) || other.windSpeed == windSpeed)&&(identical(other.description, description) || other.description == description)&&(identical(other.iconUrl, iconUrl) || other.iconUrl == iconUrl));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,cityName,temperature,description,iconUrl);
+int get hashCode => Object.hash(runtimeType,cityName,country,temperature,feelsLike,humidity,windSpeed,description,iconUrl);
 
 @override
 String toString() {
-  return 'WeatherModel(cityName: $cityName, temperature: $temperature, description: $description, iconUrl: $iconUrl)';
+  return 'WeatherModel(cityName: $cityName, country: $country, temperature: $temperature, feelsLike: $feelsLike, humidity: $humidity, windSpeed: $windSpeed, description: $description, iconUrl: $iconUrl)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $WeatherModelCopyWith<$Res>  {
   factory $WeatherModelCopyWith(WeatherModel value, $Res Function(WeatherModel) _then) = _$WeatherModelCopyWithImpl;
 @useResult
 $Res call({
- String cityName, double temperature, String description, String iconUrl
+ String cityName, String country, double temperature, double feelsLike, int humidity, double windSpeed, String description, String iconUrl
 });
 
 
@@ -62,10 +62,14 @@ class _$WeatherModelCopyWithImpl<$Res>
 
 /// Create a copy of WeatherModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? cityName = null,Object? temperature = null,Object? description = null,Object? iconUrl = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? cityName = null,Object? country = null,Object? temperature = null,Object? feelsLike = null,Object? humidity = null,Object? windSpeed = null,Object? description = null,Object? iconUrl = null,}) {
   return _then(_self.copyWith(
 cityName: null == cityName ? _self.cityName : cityName // ignore: cast_nullable_to_non_nullable
+as String,country: null == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
 as String,temperature: null == temperature ? _self.temperature : temperature // ignore: cast_nullable_to_non_nullable
+as double,feelsLike: null == feelsLike ? _self.feelsLike : feelsLike // ignore: cast_nullable_to_non_nullable
+as double,humidity: null == humidity ? _self.humidity : humidity // ignore: cast_nullable_to_non_nullable
+as int,windSpeed: null == windSpeed ? _self.windSpeed : windSpeed // ignore: cast_nullable_to_non_nullable
 as double,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,iconUrl: null == iconUrl ? _self.iconUrl : iconUrl // ignore: cast_nullable_to_non_nullable
 as String,
@@ -153,10 +157,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String cityName,  double temperature,  String description,  String iconUrl)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String cityName,  String country,  double temperature,  double feelsLike,  int humidity,  double windSpeed,  String description,  String iconUrl)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _WeatherModel() when $default != null:
-return $default(_that.cityName,_that.temperature,_that.description,_that.iconUrl);case _:
+return $default(_that.cityName,_that.country,_that.temperature,_that.feelsLike,_that.humidity,_that.windSpeed,_that.description,_that.iconUrl);case _:
   return orElse();
 
 }
@@ -174,10 +178,10 @@ return $default(_that.cityName,_that.temperature,_that.description,_that.iconUrl
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String cityName,  double temperature,  String description,  String iconUrl)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String cityName,  String country,  double temperature,  double feelsLike,  int humidity,  double windSpeed,  String description,  String iconUrl)  $default,) {final _that = this;
 switch (_that) {
 case _WeatherModel():
-return $default(_that.cityName,_that.temperature,_that.description,_that.iconUrl);case _:
+return $default(_that.cityName,_that.country,_that.temperature,_that.feelsLike,_that.humidity,_that.windSpeed,_that.description,_that.iconUrl);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -194,10 +198,10 @@ return $default(_that.cityName,_that.temperature,_that.description,_that.iconUrl
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String cityName,  double temperature,  String description,  String iconUrl)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String cityName,  String country,  double temperature,  double feelsLike,  int humidity,  double windSpeed,  String description,  String iconUrl)?  $default,) {final _that = this;
 switch (_that) {
 case _WeatherModel() when $default != null:
-return $default(_that.cityName,_that.temperature,_that.description,_that.iconUrl);case _:
+return $default(_that.cityName,_that.country,_that.temperature,_that.feelsLike,_that.humidity,_that.windSpeed,_that.description,_that.iconUrl);case _:
   return null;
 
 }
@@ -209,11 +213,15 @@ return $default(_that.cityName,_that.temperature,_that.description,_that.iconUrl
 
 
 class _WeatherModel implements WeatherModel {
-  const _WeatherModel({required this.cityName, required this.temperature, required this.description, required this.iconUrl});
+  const _WeatherModel({required this.cityName, required this.country, required this.temperature, required this.feelsLike, required this.humidity, required this.windSpeed, required this.description, required this.iconUrl});
   
 
 @override final  String cityName;
+@override final  String country;
 @override final  double temperature;
+@override final  double feelsLike;
+@override final  int humidity;
+@override final  double windSpeed;
 @override final  String description;
 @override final  String iconUrl;
 
@@ -227,16 +235,16 @@ _$WeatherModelCopyWith<_WeatherModel> get copyWith => __$WeatherModelCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _WeatherModel&&(identical(other.cityName, cityName) || other.cityName == cityName)&&(identical(other.temperature, temperature) || other.temperature == temperature)&&(identical(other.description, description) || other.description == description)&&(identical(other.iconUrl, iconUrl) || other.iconUrl == iconUrl));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _WeatherModel&&(identical(other.cityName, cityName) || other.cityName == cityName)&&(identical(other.country, country) || other.country == country)&&(identical(other.temperature, temperature) || other.temperature == temperature)&&(identical(other.feelsLike, feelsLike) || other.feelsLike == feelsLike)&&(identical(other.humidity, humidity) || other.humidity == humidity)&&(identical(other.windSpeed, windSpeed) || other.windSpeed == windSpeed)&&(identical(other.description, description) || other.description == description)&&(identical(other.iconUrl, iconUrl) || other.iconUrl == iconUrl));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,cityName,temperature,description,iconUrl);
+int get hashCode => Object.hash(runtimeType,cityName,country,temperature,feelsLike,humidity,windSpeed,description,iconUrl);
 
 @override
 String toString() {
-  return 'WeatherModel(cityName: $cityName, temperature: $temperature, description: $description, iconUrl: $iconUrl)';
+  return 'WeatherModel(cityName: $cityName, country: $country, temperature: $temperature, feelsLike: $feelsLike, humidity: $humidity, windSpeed: $windSpeed, description: $description, iconUrl: $iconUrl)';
 }
 
 
@@ -247,7 +255,7 @@ abstract mixin class _$WeatherModelCopyWith<$Res> implements $WeatherModelCopyWi
   factory _$WeatherModelCopyWith(_WeatherModel value, $Res Function(_WeatherModel) _then) = __$WeatherModelCopyWithImpl;
 @override @useResult
 $Res call({
- String cityName, double temperature, String description, String iconUrl
+ String cityName, String country, double temperature, double feelsLike, int humidity, double windSpeed, String description, String iconUrl
 });
 
 
@@ -264,10 +272,14 @@ class __$WeatherModelCopyWithImpl<$Res>
 
 /// Create a copy of WeatherModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? cityName = null,Object? temperature = null,Object? description = null,Object? iconUrl = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? cityName = null,Object? country = null,Object? temperature = null,Object? feelsLike = null,Object? humidity = null,Object? windSpeed = null,Object? description = null,Object? iconUrl = null,}) {
   return _then(_WeatherModel(
 cityName: null == cityName ? _self.cityName : cityName // ignore: cast_nullable_to_non_nullable
+as String,country: null == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
 as String,temperature: null == temperature ? _self.temperature : temperature // ignore: cast_nullable_to_non_nullable
+as double,feelsLike: null == feelsLike ? _self.feelsLike : feelsLike // ignore: cast_nullable_to_non_nullable
+as double,humidity: null == humidity ? _self.humidity : humidity // ignore: cast_nullable_to_non_nullable
+as int,windSpeed: null == windSpeed ? _self.windSpeed : windSpeed // ignore: cast_nullable_to_non_nullable
 as double,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,iconUrl: null == iconUrl ? _self.iconUrl : iconUrl // ignore: cast_nullable_to_non_nullable
 as String,
