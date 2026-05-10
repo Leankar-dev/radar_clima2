@@ -9,6 +9,7 @@ import 'package:radar_clima2/features/weather/presentation/screens/widgets/weath
 import 'package:radar_clima2/shared/widgets/custom_text_form_field.dart';
 import 'package:radar_clima2/shared/widgets/loading_overlay.dart';
 import 'package:radar_clima2/shared/widgets/weather_app_bar.dart';
+import 'package:radar_clima2/shared/widgets/app_drawer.dart';
 import 'package:radar_clima2/shared/widgets/weather_snack_bar.dart';
 
 class WeatherHomeScreen extends ConsumerStatefulWidget {
@@ -54,6 +55,7 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
       resizeToAvoidBottomInset: true,
       // Permite que o conteúdo fique visivel atrás da AppBar, para o efeito de halo aurora funcionar melhor
       extendBodyBehindAppBar: true,
+      drawer: const AppDrawer(),
       appBar: const WeatherAppBar(),
       body: Stack(
         children: [

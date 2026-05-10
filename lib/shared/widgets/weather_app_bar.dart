@@ -26,19 +26,32 @@ class WeatherAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: SizedBox(
               height: kToolbarHeight,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(Icons.radar, color: AppColors.accent, size: 22),
-                  const SizedBox(width: 10),
-                  const Text(
-                    AppStrings.appTitle,
-                    style: TextStyle(
-                      color: AppColors.white90,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w300,
-                      letterSpacing: 1.4,
+                  Builder(
+                    builder: (ctx) => IconButton(
+                      icon: const Icon(Icons.menu, color: AppColors.white90),
+                      onPressed: () => Scaffold.of(ctx).openDrawer(),
                     ),
                   ),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(Icons.radar, color: AppColors.accent, size: 22),
+                        const SizedBox(width: 10),
+                        const Text(
+                          AppStrings.appTitle,
+                          style: TextStyle(
+                            color: AppColors.white90,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w300,
+                            letterSpacing: 1.4,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 48),
                 ],
               ),
             ),

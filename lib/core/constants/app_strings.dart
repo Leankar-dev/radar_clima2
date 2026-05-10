@@ -25,4 +25,18 @@ abstract final class AppStrings {
   static const celsius = '°C';
   static const windUnit = 'km/h';
   static const humidityUnit = '%';
+
+  static const settings = 'Configurações';
+  static const themeLabel = 'Tema';
+  static const themeLightOption = 'Claro';
+  static const themeDarkOption = 'Escuro';
+  static const themeSystemOption = 'Sistema';
+  static const aboutCard = 'Sobre o app';
+  static const developerLabel = 'Programador';
+  static const developerName = 'Leankar.dev';
+  static const developerEmail = 'leankar.dev@gmail.com';
+  static const developerWebsite = 'https://leankar.dev';
+  static const versionLabel = 'Versão';
+  static const privacyPolicy = 'Política de Privacidade';
+  static const start = 'Inicio';
 }

@@ -11,7 +11,7 @@ class WeatherNotifier extends _$WeatherNotifier {
   FutureOr<WeatherModel> build() async {
     final prefs = ref.read(preferencesServiceProvider);
     final lastCity = await prefs.getLastCity();
-    return _fetchWeather(lastCity ?? 'Taubaté');
+    return _fetchWeather(lastCity ?? 'São Paulo');
   }
 
   Future<WeatherModel> _fetchWeather(String cityName) =>
