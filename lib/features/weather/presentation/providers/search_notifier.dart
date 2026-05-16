@@ -1,5 +1,5 @@
 import 'package:radar_clima2/features/weather/domain/models/geocoding_model.dart';
-import 'package:radar_clima2/features/weather/domain/usecases/search_city_usecase_provider.dart';
+import 'package:radar_clima2/features/weather/presentation/providers/search_city_usecase_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'search_notifier.g.dart';

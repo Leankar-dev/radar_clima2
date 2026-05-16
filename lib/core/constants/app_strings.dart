@@ -40,6 +40,8 @@ abstract final class AppStrings {
   static const privacyPolicy = 'Política de Privacidade';
   static const start = 'Inicio';
 
+  static const defaultCity = 'São Paulo';
+
   static const cancelButton = 'Cancelar';
   static String disambiguationTitle(String cityName) =>
       'Qual "$cityName" você quis dizer?';

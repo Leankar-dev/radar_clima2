@@ -10,8 +10,7 @@ class GeocodingRepositoryImpl implements GeocodingRepository {
   final Dio _dio;
   final ConnectivityService _connectivityService;
 
-  GeocodingRepositoryImpl(this._dio, {ConnectivityService? connectivityService})
-      : _connectivityService = connectivityService ?? ConnectivityService();
+  GeocodingRepositoryImpl(this._dio, this._connectivityService);
 
   @override
   Future<List<GeocodingModel>> searchCity(String cityName) async {

@@ -10,6 +10,9 @@ class WeatherDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tempFontSize =
+        (MediaQuery.of(context).size.shortestSide * 0.18).clamp(52.0, 96.0);
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -38,7 +41,7 @@ class WeatherDisplay extends StatelessWidget {
                 style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   color: AppColors.white90,
                   fontWeight: FontWeight.w200,
-                  fontSize: 72,
+                  fontSize: tempFontSize,
                 ),
               ),
               TextSpan(

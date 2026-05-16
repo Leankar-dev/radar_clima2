@@ -55,4 +55,4 @@ final class GeocodingRepositoryProvider
 }
 
 String _$geocodingRepositoryHash() =>
-    r'6caf4144123104e7b426476fc220fde5c5174b2a';
+    r'5820a63c6d96fa95026321e7ad472e30be269da1';

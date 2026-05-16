@@ -54,4 +54,4 @@ final class WeatherRepositoryProvider
   }
 }
 
-String _$weatherRepositoryHash() => r'8a5b0e099ffb75f226880b9cb03b50c1a31a3f60';
+String _$weatherRepositoryHash() => r'fa7118a06f50caca807f995b09b6dc08b65e2507';

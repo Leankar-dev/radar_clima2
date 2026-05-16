@@ -9,8 +9,7 @@ class WeatherRepositoryImpl implements WeatherRepository {
   final Dio _dio;
   final ConnectivityService _connectivityService;
 
-  WeatherRepositoryImpl(this._dio, {ConnectivityService? connectivityService})
-    : _connectivityService = connectivityService ?? ConnectivityService();
+  WeatherRepositoryImpl(this._dio, this._connectivityService);
 
   @override
   Future<WeatherModel> fetchWeather(String city) async {

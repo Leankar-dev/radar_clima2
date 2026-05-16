@@ -8,7 +8,7 @@ class ThemeSelectorCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final current = ref.watch(themeProvider);
+    final current = ref.watch(themeProvider).asData?.value ?? ThemeMode.system;
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),

@@ -21,7 +21,7 @@ class AuroraHalo extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         gradient: RadialGradient(
-          colors: [color.withAlpha(alpha), AppColors.transparent],
+          colors: [color.withValues(alpha: alpha / 255), AppColors.transparent],
           stops: const [0.0, 1.0],
         ),
       ),

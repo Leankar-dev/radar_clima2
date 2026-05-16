@@ -102,6 +102,7 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
 
     final weatherState = ref.watch(weatherProvider);
     final isGeocoding = ref.watch(searchProvider).isLoading;
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -115,7 +116,7 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
             top: -100,
             left: -80,
             child: AuroraHalo(
-              size: 380,
+              size: screenWidth * 0.95,
               color: AppColors.auroraBlue,
               alpha: 55,
             ),
@@ -124,7 +125,7 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
             top: 200,
             right: -90,
             child: AuroraHalo(
-              size: 300,
+              size: screenWidth * 0.75,
               color: AppColors.auroraViolet,
               alpha: 45,
             ),
@@ -132,7 +133,11 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
           Positioned(
             bottom: 40,
             left: 20,
-            child: AuroraHalo(size: 220, color: AppColors.accent, alpha: 28),
+            child: AuroraHalo(
+              size: screenWidth * 0.55,
+              color: AppColors.accent,
+              alpha: 28,
+            ),
           ),
           SafeArea(
             child: Padding(

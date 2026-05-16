@@ -7,17 +7,12 @@ part 'theme_notifier.g.dart';
 @riverpod
 class ThemeNotifier extends _$ThemeNotifier {
   @override
-  ThemeMode build() {
-    _loadSavedTheme();
-    return ThemeMode.system;
+  Future<ThemeMode> build() async {
+    return ref.read(preferencesServiceProvider).getTheme();
   }
 
   Future<void> setTheme(ThemeMode mode) async {
-    state = mode;
+    state = AsyncData(mode);
     await ref.read(preferencesServiceProvider).saveTheme(mode);
-  }
-
-  Future<void> _loadSavedTheme() async {
-    state = await ref.read(preferencesServiceProvider).getTheme();
   }
 }
