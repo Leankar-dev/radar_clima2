@@ -1,4 +1,4 @@
-import 'package:radar_clima2/features/weather/data/repositories/weather_repository.dart';
+import 'package:radar_clima2/features/weather/domain/repositories/weather_repository.dart';
 import 'package:radar_clima2/features/weather/domain/models/weather_model.dart';
 
 class FetchWeatherUseCase {

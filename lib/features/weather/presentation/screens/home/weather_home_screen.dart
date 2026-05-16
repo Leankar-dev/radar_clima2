@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:radar_clima2/core/constants/app_colors.dart';
 import 'package:radar_clima2/core/constants/app_strings.dart';
+import 'package:radar_clima2/core/errors/failure.dart';
+import 'package:radar_clima2/features/weather/domain/models/geocoding_model.dart';
+import 'package:radar_clima2/features/weather/presentation/providers/search_notifier.dart';
 import 'package:radar_clima2/features/weather/presentation/providers/weather_notifier.dart';
 import 'package:radar_clima2/features/weather/presentation/screens/widgets/aurora_halo.dart';
+import 'package:radar_clima2/features/weather/presentation/screens/widgets/city_disambiguation_sheet.dart';
 import 'package:radar_clima2/features/weather/presentation/screens/widgets/current_weather_card.dart';
 import 'package:radar_clima2/features/weather/presentation/screens/widgets/weather_error_view.dart';
 import 'package:radar_clima2/shared/widgets/custom_text_form_field.dart';
@@ -31,10 +35,8 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
 
   void _onSearchPressed() {
     if (!_formKey.currentState!.validate()) return;
-
-    final city = _cityEC.text.trim();
-    ref.read(weatherProvider.notifier).searchWeather(city);
     FocusScope.of(context).unfocus();
+    ref.read(searchProvider.notifier).searchCity(_cityEC.text.trim());
   }
 
   void _onRetry() {
@@ -43,17 +45,67 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
       WeatherSnackBar.show(context, AppStrings.searchEmptyError, isError: true);
       return;
     }
-    ref.read(weatherProvider.notifier).searchWeather(city);
+    ref.read(searchProvider.notifier).searchCity(city);
+  }
+
+  void _selectCity(GeocodingModel city) {
+    ref.read(weatherProvider.notifier).searchWeatherByCoords(
+      city.lat,
+      city.lon,
+      city.name,
+    );
+  }
+
+  void _showDisambiguationSheet(List<GeocodingModel> cities) {
+    showModalBottomSheet<void>(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (_) => CityDisambiguationSheet(
+        cities: cities,
+        onCitySelected: (city) {
+          Navigator.pop(context);
+          _selectCity(city);
+        },
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    ref.listen<AsyncValue<List<GeocodingModel>?>>(
+      searchProvider,
+      (_, state) {
+        state.whenOrNull(
+          data: (cities) {
+            if (cities == null) return;
+            if (cities.length == 1) {
+              _selectCity(cities.first);
+            } else {
+              _showDisambiguationSheet(cities);
+            }
+          },
+          error: (err, _) {
+            if (err is! CityNotFoundException) {
+              final city = _cityEC.text.trim();
+              if (city.isNotEmpty) {
+                ref.read(weatherProvider.notifier).searchWeather(city);
+                return;
+              }
+            }
+            final message =
+                err is Failure ? err.message : AppStrings.unexpectedError;
+            WeatherSnackBar.show(context, message, isError: true);
+          },
+        );
+      },
+    );
+
     final weatherState = ref.watch(weatherProvider);
+    final isGeocoding = ref.watch(searchProvider).isLoading;
 
     return Scaffold(
       backgroundColor: AppColors.background,
       resizeToAvoidBottomInset: true,
-      // Permite que o conteúdo fique visivel atrás da AppBar, para o efeito de halo aurora funcionar melhor
       extendBodyBehindAppBar: true,
       drawer: const AppDrawer(),
       appBar: const WeatherAppBar(),
@@ -101,10 +153,15 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
                         }
                         return null;
                       },
-                      suffixIcon: IconButton(
-                        icon: const Icon(Icons.search, color: AppColors.accent),
-                        onPressed: _onSearchPressed,
-                      ),
+                      suffixIcon: isGeocoding
+                          ? const _SearchLoadingIndicator()
+                          : IconButton(
+                              icon: const Icon(
+                                Icons.search,
+                                color: AppColors.accent,
+                              ),
+                              onPressed: _onSearchPressed,
+                            ),
                     ),
                   ),
                   const SizedBox(height: 32),
@@ -126,6 +183,25 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _SearchLoadingIndicator extends StatelessWidget {
+  const _SearchLoadingIndicator();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Padding(
+      padding: EdgeInsets.all(12),
+      child: SizedBox(
+        width: 20,
+        height: 20,
+        child: CircularProgressIndicator(
+          strokeWidth: 2,
+          color: AppColors.accent,
+        ),
       ),
     );
   }

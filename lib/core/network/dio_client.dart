@@ -16,3 +16,15 @@ Dio dio(Ref ref) {
   dio.interceptors.add(ApiInterceptor());
   return dio;
 }
+
+@riverpod
+Dio geoDio(Ref ref) {
+  final options = BaseOptions(
+    baseUrl: ApiConstants.geoBaseUrl,
+    connectTimeout: const Duration(seconds: 5),
+    receiveTimeout: const Duration(seconds: 3),
+  );
+  final instance = Dio(options);
+  instance.interceptors.add(ApiInterceptor());
+  return instance;
+}

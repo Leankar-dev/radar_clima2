@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:radar_clima2/core/errors/failure.dart';
 import 'package:radar_clima2/core/network/connectivity_service.dart';
 import 'package:radar_clima2/features/weather/data/dto/weather_dto.dart';
-import 'package:radar_clima2/features/weather/data/repositories/weather_repository.dart';
+import 'package:radar_clima2/features/weather/domain/repositories/weather_repository.dart';
 import 'package:radar_clima2/features/weather/domain/models/weather_model.dart';
 
 class WeatherRepositoryImpl implements WeatherRepository {
@@ -15,24 +15,30 @@ class WeatherRepositoryImpl implements WeatherRepository {
   @override
   Future<WeatherModel> fetchWeather(String city) async {
     final isConnected = await _connectivityService.hasConnection();
-    if (!isConnected) {
-      throw const NetworkFailure();
-    }
+    if (!isConnected) throw const NetworkFailure();
 
+    return _getWeather({'q': city, 'units': 'metric', 'lang': 'pt_br'});
+  }
+
+  @override
+  Future<WeatherModel> fetchWeatherByCoords(double lat, double lon) async {
+    final isConnected = await _connectivityService.hasConnection();
+    if (!isConnected) throw const NetworkFailure();
+
+    return _getWeather({
+      'lat': lat,
+      'lon': lon,
+      'units': 'metric',
+      'lang': 'pt_br',
+    });
+  }
+
+  Future<WeatherModel> _getWeather(Map<String, dynamic> params) async {
     try {
-      final response = await _dio.get(
-        'weather',
-        queryParameters: {
-          'q': city,
-          'units': 'metric',
-          'lang': 'pt_br',
-        },
-      );
+      final response = await _dio.get('weather', queryParameters: params);
       final dto = WeatherDto.fromJson(response.data);
 
-      if (dto.weather.isEmpty) {
-        throw const CityNotFoundException();
-      }
+      if (dto.weather.isEmpty) throw const CityNotFoundException();
 
       return WeatherModel(
         cityName: dto.name,
@@ -53,7 +59,6 @@ class WeatherRepositoryImpl implements WeatherRepository {
       }
 
       final statusCode = e.response?.statusCode;
-
       if (statusCode == 404) throw const CityNotFoundException();
       if (statusCode == 401) throw const ApiKeyInvalidFailure();
 

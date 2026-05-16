@@ -1,6 +1,6 @@
 import 'package:radar_clima2/core/network/dio_client.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'weather_repository.dart';
+import 'package:radar_clima2/features/weather/domain/repositories/weather_repository.dart';
 import 'weather_repository_impl.dart';
 
 part 'weather_repository_provider.g.dart';
