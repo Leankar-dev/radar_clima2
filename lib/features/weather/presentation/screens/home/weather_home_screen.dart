@@ -49,11 +49,13 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
   }
 
   void _selectCity(GeocodingModel city) {
-    ref.read(weatherProvider.notifier).searchWeatherByCoords(
-      city.lat,
-      city.lon,
-      city.name,
-    );
+    ref
+        .read(weatherProvider.notifier)
+        .searchWeatherByCoords(
+          city.lat,
+          city.lon,
+          city.name,
+        );
   }
 
   void _showDisambiguationSheet(List<GeocodingModel> cities) {
@@ -92,8 +94,9 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
                 return;
               }
             }
-            final message =
-                err is Failure ? err.message : AppStrings.unexpectedError;
+            final message = err is Failure
+                ? err.message
+                : AppStrings.unexpectedError;
             WeatherSnackBar.show(context, message, isError: true);
           },
         );
